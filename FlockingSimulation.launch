@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="stage_ros" type="stageros" name="stageros" args="$(find FlockingSimulation)/world/swarmlab_multiple_turtlebot.world" respawn="false" output="screen" />
+	<node name="robot_0" pkg="FlockingSimulation" type="stage_random_walk.py" args = "0C" output="screen" />
+	<node name="robot_1" pkg="FlockingSimulation" type="stage_random_walk.py" args = "1C" output="screen" />
+	<node name="robot_2" pkg="FlockingSimulation" type="stage_random_walk.py" args = "2C" output="screen" />
+	<node name="robot_3" pkg="FlockingSimulation" type="stage_random_walk.py" args = "3C" output="screen" />
+</launch>

@@ -1,0 +1,66 @@
+resolution 0.02 # set the resolution of the underlying raytrace model in meters
+interval_sim 100 # simulation timestep in milliseconds
+#interval_real 100
+
+window
+( 
+  size [ 744 524 ] 
+  scale 26.187 
+)
+
+define map model
+(
+  color "gray30"
+  boundary 0
+  gui_nose 0
+  gui_grid 0
+  gui_move 0
+  gui_outline 0
+  obstacle_return 1
+  gripper_return 0
+  fiducial_return 0
+#  laser_return 1
+)
+
+map
+(
+  name "active_map"
+  size [20.900  27.750 0.500]
+  pose [0.000 0.000 0.000 0.000]
+  bitmap "maps/swarmlab_map.pgm"
+)
+
+define hokuyo ranger
+(
+  sensor(
+    range [0 10.0]
+    fov 230.25
+#     fov 60.00
+    samples 481
+  )
+  color "black"
+  size [ 0.050 0.050 0.100 ]
+  ctrl "lasernoise"
+)
+
+
+
+define turtlebot position
+(
+ # localisation "odom"
+  odom_error [0.01 0.05 0.01 0.02 0.5 1.0]
+  size [0.350 0.350 0.450]
+  origin [0.000 0.000 0.000 0.000]
+  gui_nose 1
+  drive "diff"
+  hokuyo(pose [ -0.200 0.000 0.000 0.000 ])
+  bitmap "robot.png"
+)
+
+turtlebot( pose [-1.000 0.000 0.000 -0.000] color "green")
+turtlebot( pose [1.000 -10.561 0.000 13.381] color "green")
+
+turtlebot( pose [-1.910 9.142 0.000 76.811] color "red")
+
+
+
